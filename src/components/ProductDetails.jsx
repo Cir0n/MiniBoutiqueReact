@@ -1,17 +1,20 @@
 import React from 'react'
 
-function ProductDetails() {
+function ProductDetails({products, isFavorite, onAddToCart}) {
   return (
     <section className="product-details">
         <h2>Produit mis en avant</h2>
 
         <div className="details-card">
-            <h3>Ordinateur portable</h3>
+            <h3>{products.name}</h3>
             <p>
-                Un ordinateur performant pour le développement web, les projets
-                étudiants et le travail quotidient
+                {products.description}
             </p>
-            <p>prix: 899 €</p>
+            <p>{products.price} €</p>
+            {isFavorite && <p>Ce produit est dans vos favoris</p>}
+            <button onClick={() => onAddToCart(products)}>
+                Ajouter au panier
+            </button>
         </div>
     </section>
   )
